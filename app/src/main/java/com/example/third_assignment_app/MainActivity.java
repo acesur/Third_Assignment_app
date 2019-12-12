@@ -44,7 +44,6 @@ public class MainActivity extends AppCompatActivity {
         Toast.makeText(this,"Successfully Registered",Toast.LENGTH_SHORT);
 
     }
-
     private void transfer(){
         Intent intent = new Intent(MainActivity.this,LoginActivity.class);
         startActivity(intent);
