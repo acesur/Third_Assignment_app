@@ -2,6 +2,7 @@ package com.example.third_assignment_app;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
@@ -11,7 +12,7 @@ import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
     private EditText etUserName, etPassword;
-    private Button btnLoginSignUp;
+    private Button btnLoginSignUp, btnLoginPage;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,6 +27,13 @@ public class MainActivity extends AppCompatActivity {
                 SignIn();
             }
         });
+        btnLoginPage=findViewById(R.id.btnLoginPage);
+        btnLoginPage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                transfer();
+            }
+        });
     }
     private void SignIn(){
         SharedPreferences sharedPreferences = getSharedPreferences("User",MODE_PRIVATE);
@@ -35,5 +43,10 @@ public class MainActivity extends AppCompatActivity {
         editor.commit();
         Toast.makeText(this,"Successfully Registered",Toast.LENGTH_SHORT);
 
+    }
+
+    private void transfer(){
+        Intent intent = new Intent(MainActivity.this,LoginActivity.class);
+        startActivity(intent);
     }
 }
